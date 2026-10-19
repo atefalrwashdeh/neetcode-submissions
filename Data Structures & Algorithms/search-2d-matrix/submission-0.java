@@ -1,0 +1,19 @@
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+        int mid;
+        int left = 0;
+        int right = (rows * cols)-1;
+        while(left < right){
+            mid = left + (right -left)/2;
+            int midValue = matrix[mid/cols][mid%cols];
+            if(midValue == target) return true;
+            if(midValue < target) left = mid+1; 
+            else right = mid -1;
+        }
+        return matrix[left/cols][left %cols] == target;
+        
+    }
+}
